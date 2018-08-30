@@ -6,7 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1dc13333-e18c-4c36-926b-095c5fb5abb7" name="Default" comment="" />
+    <list default="true" id="1dc13333-e18c-4c36-926b-095c5fb5abb7" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,7 +23,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/felink/signaturev2/SignerV2.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="244">
-              <caret line="30" column="56" lean-forward="true" selection-start-line="30" selection-start-column="56" selection-end-line="30" selection-end-column="56" />
+              <caret line="30" column="56" selection-start-line="30" selection-start-column="56" selection-end-line="30" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -33,7 +35,7 @@
         <entry file="file://$PROJECT_DIR$/console.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-55927">
-              <caret line="22" column="44" lean-forward="true" selection-start-line="22" selection-start-column="44" selection-end-line="22" selection-end-column="44" />
+              <caret line="22" column="44" selection-start-line="22" selection-start-column="44" selection-end-line="22" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -55,17 +57,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="13" lean-forward="true" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="KeyStore.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/felink/signaturev2/domain/KeyStore.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="204">
+              <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -88,6 +81,9 @@
       <find>MF</find>
     </findStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -106,6 +102,7 @@
         <option value="$PROJECT_DIR$/src/com/felink/signaturev2/SignerV2.java" />
         <option value="$PROJECT_DIR$/src/com/felink/signaturev2/SignerTool.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/sample.txt" />
       </list>
     </option>
   </component>
@@ -141,26 +138,6 @@
             <path>
               <item name="signaturev2" type="b2602c69:ProjectViewProjectNode" />
               <item name="signaturev2" type="462c0819:PsiDirectoryNode" />
-              <item name="   10632 res" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="signaturev2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="signaturev2" type="462c0819:PsiDirectoryNode" />
-              <item name="   20056 res" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="signaturev2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="signaturev2" type="462c0819:PsiDirectoryNode" />
-              <item name="   38003 res" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="signaturev2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="signaturev2" type="462c0819:PsiDirectoryNode" />
-              <item name="libs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="signaturev2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="signaturev2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -174,7 +151,7 @@
               <item name="signaturev2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="signaturev2" type="462c0819:PsiDirectoryNode" />
-              <item name="kitset" type="462c0819:PsiDirectoryNode" />
+              <item name="domain" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -200,6 +177,7 @@
       <recent name="D:\workspace\workspace_IJ\signaturev2\res" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\workspace\workspace_IJ\signaturev2" />
       <recent name="D:\workspace\workspace_IJ\signaturev2\libs" />
     </key>
   </component>
@@ -279,16 +257,15 @@
       <option name="presentableId" value="Default" />
       <updated>1535506982396</updated>
       <workItem from="1535506986745" duration="33435000" />
-      <workItem from="1535593395623" duration="24414000" />
+      <workItem from="1535593395623" duration="25697000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57849000" />
+    <option name="totallyTimeSpent" value="59132000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -300,13 +277,13 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.15669206" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.32897604" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3297062" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18550107" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25906184" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.062023938" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.062091503" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -671,24 +648,17 @@
     <entry file="file://$PROJECT_DIR$/console.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-55927">
-          <caret line="22" column="44" lean-forward="true" selection-start-line="22" selection-start-column="44" selection-end-line="22" selection-end-column="44" />
+          <caret line="22" column="44" selection-start-line="22" selection-start-column="44" selection-end-line="22" selection-end-column="44" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/felink/signaturev2/SignerV2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="244">
-          <caret line="30" column="56" lean-forward="true" selection-start-line="30" selection-start-column="56" selection-end-line="30" selection-end-column="56" />
+          <caret line="30" column="56" selection-start-line="30" selection-start-column="56" selection-end-line="30" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/felink/signaturev2/domain/KeyStore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
@@ -704,10 +674,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/felink/signaturev2/domain/KeyStore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sample.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="39" lean-forward="true" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="13" lean-forward="true" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        <state relative-caret-position="204">
+          <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
         </state>
       </provider>
     </entry>
