@@ -1,0 +1,4 @@
+//        String s = "-digestalg SHA1 -sigalg MD5withRSA -verbose -storepass ndkeystore -keypass ndkeystore -keystore E:/dev/ndkeystore -signedjar F:/v2.apk F:/Launcher_dingkai_8.7_2017-03-24-11-20-28.apk ndkeystore";
+//        args = s.split(" ");
+        //-digestalg SHA1 -sigalg MD5withRSA -verbose -storepass ndkeystore -keypass ndkeystore -keystore E:/dev/ndkeystore -signedjar F:/v2.apk F:/Launcher_dingkai_8.7_2017-03-24-11-20-28.apk ndkeystore
+//        KeyStore keyStore = new KeyStore("E:/dev/ndkeystore", "ndkeystore");

@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="signaturev2:jar">
+    <output-path>F:/</output-path>
+    <root id="archive" name="signaturev2.jar">
+      <element id="module-output" name="signaturev2" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/apksigner.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
