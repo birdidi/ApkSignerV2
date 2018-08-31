@@ -156,4 +156,36 @@ public class FileUtil {
     public static String getFileName(String path) {
         return new File(path).getName();
     }
+
+    public static String readFileContent(String path) {
+        StringBuffer sb = new StringBuffer();
+        if (!isExists(path)) {
+            return sb.toString();
+        } else {
+            FileInputStream ins = null;
+
+            try {
+                ins = new FileInputStream(new File(path));
+                BufferedReader reader = new BufferedReader(new InputStreamReader(ins));
+                String line = null;
+
+                while ((line = reader.readLine()) != null) {
+                    sb.append(line);
+                }
+            } catch (Exception var13) {
+                var13.printStackTrace();
+            } finally {
+                if (ins != null) {
+                    try {
+                        ins.close();
+                    } catch (IOException var12) {
+                        var12.printStackTrace();
+                    }
+                }
+
+            }
+
+            return sb.toString();
+        }
+    }
 }
