@@ -1,7 +1,6 @@
 package com.felink.signaturev2;
 
 import com.felink.signaturev2.domain.KeyStore;
-import com.felink.signaturev2.kitset.Cmd;
 import com.felink.signaturev2.kitset.StringUtil;
 
 import java.io.BufferedReader;
@@ -29,8 +28,17 @@ public class SignerV1 {
                 workpath = jarsignerFile.getParent();
             }
             List<String> cmdarray = new ArrayList<>();
-//            cmdarray.add("cmd");
-//            cmdarray.add("/C");
+            String os = System.getProperty("os.name");
+            if (!StringUtil.isEmpty(os)) {
+                if ("Linux".equals(os)) {
+                    cmdarray.add("/bin/sh");
+                    cmdarray.add("-c");
+                } else if (os.contains("Windows")) {
+                    cmdarray.add("cmd");
+                    cmdarray.add("/C");
+                }
+            }
+
             cmdarray.add(jarsigner);
             cmdarray.addAll(Arrays.asList(params));
 

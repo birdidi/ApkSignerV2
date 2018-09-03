@@ -210,7 +210,17 @@ public class SignerTool {
         final String tempFilePath = inputPath + "_aligned";
         FileUtil.delFile(tempFilePath);
 
-        String[] cmdarray = {"cmd.exe", "/C", zipalignPath, "-v", "-f", "4", inputPath, tempFilePath};
+        String[] cmdarray = null;
+        String os = System.getProperty("os.name");
+        if (!StringUtil.isEmpty(os)) {
+            if ("Linux".equals(os)) {
+                cmdarray = new String[]{"/bin/sh", "-c", zipalignPath, "-v", "-f", "4", inputPath, tempFilePath};
+            }
+        }
+        if (cmdarray == null) {
+            cmdarray = new String[]{"cmd", "/C", zipalignPath, "-v", "-f", "4", inputPath, tempFilePath};
+        }
+
         boolean zipalignResult = false;
         int code = 0;
         Process process = null;
@@ -245,7 +255,17 @@ public class SignerTool {
     public static boolean checkZipaligned(String src) throws Exception {
         final String zipalignPath = exportMetaFile("zipalign.exe", new File("/zipalign.exe").getAbsolutePath());
 
-        String[] cmdarray = {"cmd.exe", "/C", zipalignPath, "-c", "-v", "4", src};
+        String[] cmdarray = null;
+        String os = System.getProperty("os.name");
+        if (!StringUtil.isEmpty(os)) {
+            if ("Linux".equals(os)) {
+                cmdarray = new String[]{"/bin/sh", "-c", zipalignPath, "-c", "-v", "4", src};
+            }
+        }
+        if (cmdarray == null) {
+            cmdarray = new String[]{"cmd", "/C", zipalignPath, "-c", "-v", "4", src};
+        }
+
         boolean zipalignResult = false;
         int code = 0;
         Process process = null;
