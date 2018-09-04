@@ -4,14 +4,16 @@ import com.android.apksigner.ApkSignerTool;
 import com.felink.signaturev2.domain.KeyStore;
 import com.felink.signaturev2.kitset.FileUtil;
 import com.felink.signaturev2.kitset.StringUtil;
+import com.felink.signaturev2.platform.PlatformDor;
 
-import java.io.*;
+import java.io.File;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SignerTool {
 
-    public static final String TEMP_DIR = new File("/sign_tmp/").getAbsolutePath();
+    public static final String TEMP_DIR = new File("." + File.separator + "sign_tmp" + File.separator).getAbsolutePath();
 
     private static PrintStream consoleMonitor;
 
@@ -105,7 +107,7 @@ public class SignerTool {
             }
             if (zipalign) {
                 try {
-                    String aligned = zipalign(finalInputPath);
+                    String aligned = PlatformDor.zipalign(finalInputPath);
                     if (!StringUtil.isEmpty(aligned) && FileUtil.isExists(aligned)) {
                         finalInputPath = aligned;
                     }
@@ -124,7 +126,7 @@ public class SignerTool {
                     System.out.println("Sign V1 " + (result ? "Successful" : "Failure"));
                 }
                 //zipalign校验
-                result = checkZipaligned(finalOutputPath);
+                result = PlatformDor.checkZipaligned(finalOutputPath);
                 if (result) {
                     //签名结果校验
                     SignerTool.verify(finalOutputPath);
@@ -156,144 +158,9 @@ public class SignerTool {
         FileUtil.delAllFile(TEMP_DIR);
     }
 
-//    static String getTempFile(String fileName) {
-//        FileUtil.createDir(TEMP_DIR);
-//        return new File(TEMP_DIR + fileName).getAbsolutePath();
-//    }
-
-    static String exportMetaFile(String path, String outputPath) throws Exception {
-        if (FileUtil.isExists(outputPath)) {
-            return outputPath;
-        }
-        InputStream is = null;
-        OutputStream os = null;
-        try {
-            is = SignerTool.class.getResourceAsStream("/META-INF/" + path);
-            os = new FileOutputStream(outputPath);
-            byte[] buffer = new byte[1024];
-            int len;
-            while ((len = is.read(buffer)) != -1) {
-                os.write(buffer, 0, len);
-                os.flush();
-            }
-            return outputPath;
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (os != null) {
-                try {
-                    os.flush();
-                    os.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            if (is != null) {
-                try {
-                    is.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return null;
-    }
 
     public static void verify(String path) throws Exception {
         String[] verifyparams = {"verify", "-v", path};
         ApkSignerTool.main(verifyparams);
-    }
-
-    public static String zipalign(String inputPath) throws Exception {
-        final String zipalignPath = exportMetaFile("zipalign.exe", new File("/zipalign.exe").getAbsolutePath());
-        final String tempFilePath = inputPath + "_aligned";
-        FileUtil.delFile(tempFilePath);
-
-        String[] cmdarray = null;
-        String os = System.getProperty("os.name");
-        if (!StringUtil.isEmpty(os)) {
-            if ("Linux".equals(os)) {
-                cmdarray = new String[]{"/bin/sh", "-c", zipalignPath, "-v", "-f", "4", inputPath, tempFilePath};
-            }
-        }
-        if (cmdarray == null) {
-            cmdarray = new String[]{"cmd", "/C", zipalignPath, "-v", "-f", "4", inputPath, tempFilePath};
-        }
-
-        boolean zipalignResult = false;
-        int code = 0;
-        Process process = null;
-        try {
-            process = Runtime.getRuntime().exec(cmdarray);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            String line = "";
-            //工具执行结果
-            zipalignResult = false;
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
-                if (line.contains("Verification succesful")) {
-                    zipalignResult = true;
-                    break;
-                }
-            }
-            code = process.waitFor();
-            System.out.println("Task zip align result : " + code);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } finally {
-            if (process != null) {
-                process.destroy();
-            }
-        }
-
-        return (code == 0 && zipalignResult) ? tempFilePath : null;
-    }
-
-    public static boolean checkZipaligned(String src) throws Exception {
-        final String zipalignPath = exportMetaFile("zipalign.exe", new File("/zipalign.exe").getAbsolutePath());
-
-        String[] cmdarray = null;
-        String os = System.getProperty("os.name");
-        if (!StringUtil.isEmpty(os)) {
-            if ("Linux".equals(os)) {
-                cmdarray = new String[]{"/bin/sh", "-c", zipalignPath, "-c", "-v", "4", src};
-            }
-        }
-        if (cmdarray == null) {
-            cmdarray = new String[]{"cmd", "/C", zipalignPath, "-c", "-v", "4", src};
-        }
-
-        boolean zipalignResult = false;
-        int code = 0;
-        Process process = null;
-        try {
-            process = Runtime.getRuntime().exec(cmdarray);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            String line = "";
-            //工具执行结果
-            zipalignResult = false;
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
-                if (line.contains("Verification succesful")) {
-                    zipalignResult = true;
-                    break;
-                }
-            }
-            code = process.waitFor();
-            System.out.println(src + " is zip aligned ? " + code);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } finally {
-            if (process != null) {
-                process.destroy();
-            }
-        }
-
-        return (code == 0 && zipalignResult) ? true : false;
     }
 }

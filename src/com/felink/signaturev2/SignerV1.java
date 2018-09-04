@@ -1,6 +1,7 @@
 package com.felink.signaturev2;
 
 import com.felink.signaturev2.domain.KeyStore;
+import com.felink.signaturev2.kitset.CommonUtil;
 import com.felink.signaturev2.kitset.StringUtil;
 
 import java.io.BufferedReader;
@@ -24,7 +25,7 @@ public class SignerV1 {
                 workpath = javahome;
             } else {
                 File jarsignerFile = new File("/jarsigner.exe");
-                jarsigner = SignerTool.exportMetaFile("jarsigner.exe", jarsignerFile.getAbsolutePath());
+                jarsigner = CommonUtil.exportMetaFile("jarsigner.exe", jarsignerFile.getAbsolutePath());
                 workpath = jarsignerFile.getParent();
             }
             List<String> cmdarray = new ArrayList<>();

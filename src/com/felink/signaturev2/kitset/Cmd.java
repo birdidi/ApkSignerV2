@@ -1,6 +1,10 @@
 package com.felink.signaturev2.kitset;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Arrays;
 
 public class Cmd {
 
@@ -16,14 +20,49 @@ public class Cmd {
         return process(process, waitfor);
     }
 
-    public static void slientClose(Closeable closeable) {
-        if (closeable != null) {
-            try {
-                closeable.close();
-            } catch (Exception e) {
-                e.printStackTrace();
+    public static String exec(String[] cmdarray) throws Exception {
+        Process process = null;
+        try {
+            process = Runtime.getRuntime().exec(cmdarray);
+            String logging = getInputContent(process.getInputStream());
+            System.out.println(Arrays.asList(cmdarray) + "exec code : [" + process.waitFor() + "]");
+            return logging;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (process != null) {
+                process.destroy();
             }
         }
+        return null;
+    }
+
+    public static String exec(String cmd) throws Exception {
+        Process process = null;
+        try {
+            process = Runtime.getRuntime().exec(cmd);
+            String logging = getInputContent(process.getInputStream());
+            System.out.println(cmd + "exec code : [" + process.waitFor() + "]");
+            return logging;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (process != null) {
+                process.destroy();
+            }
+        }
+        return null;
+    }
+
+    private static String getInputContent(InputStream inputStream) throws Exception {
+        StringBuilder sb = new StringBuilder();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+        String line = null;
+        while ((line = reader.readLine()) != null) {
+            System.out.println(line);
+            sb.append(line);
+        }
+        return sb.toString();
     }
 
     private static int process(Process process, boolean waitfor) throws InterruptedException {
@@ -56,7 +95,7 @@ public class Cmd {
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
-                slientClose(mIOStream);
+                CommonUtil.slientClose(mIOStream);
             }
         }
     }

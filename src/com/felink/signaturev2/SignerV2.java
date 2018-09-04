@@ -3,6 +3,7 @@ package com.felink.signaturev2;
 import com.android.apksigner.ApkSignerTool;
 import com.felink.signaturev2.domain.KeyStore;
 import com.felink.signaturev2.kitset.FileUtil;
+import com.felink.signaturev2.platform.PlatformDor;
 
 import java.util.Arrays;
 
@@ -20,7 +21,7 @@ public class SignerV2 {
     public static boolean sign(String inputPath, String outputPath, KeyStore keyStore, boolean v1, boolean v2, boolean zipalign) {
         boolean result = false;
         try {
-            String tempPath = zipalign ? SignerTool.zipalign(inputPath) : inputPath;
+            String tempPath = zipalign ? PlatformDor.zipalign(inputPath) : inputPath;
             System.out.println(tempPath);
             if (tempPath != null) {
                 String[] signparams = {"sign",
